@@ -1,4 +1,4 @@
-import HeroImage from "@assets/getahbening.jpg";
+import HeroImage from "@assets/gedungcmi.jpg";
 import PhotoHeroOne from "../../../assets/kanker.jpg";
 import PhotoHeroTwo from "../../../assets/cmi.webp";
 
@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="relative min-h-screen bg-black text-white pt-16">
       <img
         alt="Gedung Klinik Utama CMI"
-        className="absolute inset-0 w-full h-full object-cover brightness-[.55]"
+        className="absolute inset-0 w-full h-full object-cover brightness-[.40]"
         src={HeroImage}
       />
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">

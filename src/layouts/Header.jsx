@@ -83,7 +83,7 @@ export default function Example() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        mobileMenuOpen ? "bg-transparent" : "bg-white"
+        isScrolled ? "bg-white shadow" : "bg-transparent"
       }`}
     >
       <nav
@@ -96,7 +96,7 @@ export default function Example() {
             <img alt="cmihospital.com" src={Logo} className="h-8 w-auto" />
             <span
               className={`ml-3 text-lg font-bold uppercase transition-colors duration-300 ${
-                mobileMenuOpen ? "text-white" : "text-emerald-800"
+                mobileMenuOpen ? "text-emerald-800" : "text-white"
               }`}
             >
               Klinik Utama CMI
@@ -115,7 +115,7 @@ export default function Example() {
               <Bars3Icon
                 aria-hidden="true"
                 className={`size-6 ${
-                  isScrolled ? "text-emerald-800" : "text-emerald-800"
+                  isScrolled ? "text-emerald-800" : "text-white"
                 }`}
               />
             </button>
@@ -126,14 +126,14 @@ export default function Example() {
           <Popover className="relative">
             <PopoverButton
               className={`flex items-center gap-x-1 text-sm/6 font-semibold ${
-                isScrolled ? "text-emerald-800" : "text-emerald-800"
+                isScrolled ? "text-emerald-800" : "text-white"
               }`}
             >
               Product
               <ChevronDownIcon
                 aria-hidden="true"
                 className={`size-5 flex-none ${
-                  isScrolled ? "text-emerald-800" : "text-emerald-800"
+                  isScrolled ? "text-emerald-800" : "text-white"
                 }`}
               />
             </PopoverButton>
@@ -188,7 +188,7 @@ export default function Example() {
           <a
             href="#"
             className={`text-sm/6 font-semibold ${
-              isScrolled ? "text-emerald-800 " : "text-emerald-800"
+              isScrolled ? "text-emerald-800 " : "text-white"
             }`}
           >
             Features
@@ -196,7 +196,7 @@ export default function Example() {
           <a
             href="#"
             className={`text-sm/6 font-semibold ${
-              isScrolled ? "text-emerald-800 " : "text-emerald-800"
+              isScrolled ? "text-emerald-800 " : "text-white"
             }`}
           >
             Marketplace
@@ -204,7 +204,7 @@ export default function Example() {
           <a
             href="#"
             className={`text-sm/6 font-semibold ${
-              isScrolled ? "text-emerald-800 " : "text-emerald-800"
+              isScrolled ? "text-emerald-800 " : "text-white"
             }`}
           >
             Company
@@ -213,11 +213,9 @@ export default function Example() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="#"
-            className={`text-sm/6 font-semibold ${
-              isScrolled ? "text-emerald-800 " : "text-emerald-800"
-            }`}
+            className={`inline-flex items-center gap-2 bg-amber-300 text-emerald-800 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-amber-400 transition duration-300`}
           >
-            Log in <span aria-hidden="true">&rarr;</span>
+            Masuk <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
