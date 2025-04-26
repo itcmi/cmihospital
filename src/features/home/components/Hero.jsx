@@ -1,20 +1,27 @@
+import { motion } from "framer-motion";
 import HeroImage from "@assets/gedungcmi.jpg";
 import PhotoHeroOne from "../../../assets/kanker.jpg";
 import PhotoHeroTwo from "../../../assets/cmi.webp";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen bg-black text-white pt-16">
+    <section className="relative min-h-screen bg-gradient-to-br from-rose-100 via-white to-white pt-16">
       <img
         alt="Gedung Klinik Utama CMI"
-        className="absolute inset-0 w-full h-full object-cover brightness-[.40]"
+        className="absolute inset-0 w-full h-full object-cover brightness-[.65] blur-[1px] contrast-90"
         src={HeroImage}
       />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <main className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-20 items-start">
           {/* Konten teks */}
-          <div className="animate-fade-in">
-            <h1 className="uppercase font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 text-left drop-shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h1 className="uppercase font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 text-left drop-shadow-lg text-white">
               Solusi Penyakit Kronis
               <br />
               Tanpa Operasi & Efek Samping
@@ -34,10 +41,16 @@ const Hero = () => {
                 <i className="fas fa-arrow-right"></i>
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Konten media */}
-          <div className="space-y-6 animate-fade-in">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             {/* Video */}
             <div className="group relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/10 transition-transform duration-300 hover:scale-[1.01]">
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-black/20 z-10 pointer-events-none" />
@@ -64,7 +77,7 @@ const Hero = () => {
                 className="w-full h-auto rounded-xl shadow-lg border border-white/10 object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
-          </div>
+          </motion.div>
         </main>
       </div>
     </section>
