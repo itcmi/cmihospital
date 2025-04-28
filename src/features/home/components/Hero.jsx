@@ -1,75 +1,245 @@
+// import { motion } from "framer-motion";
+// import BackgroundImage from "@assets/Gedungcmi.jpg"; // Pakai 1 background saja
+
+// const Hero = () => {
+//   return (
+//     <section
+//       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-100"
+//       style={{
+//         backgroundImage: `url(${BackgroundImage})`,
+//         backgroundSize: "cover",
+//         backgroundPosition: "center",
+//       }}
+//     >
+//       {/* Overlay */}
+//       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+
+//       {/* Konten Utama */}
+//       <div className="relative z-10 max-w-7xl w-full px-6 sm:px-10">
+//         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+//           {/* Kolom Teks */}
+//           <motion.div
+//             className="flex-1 text-center lg:text-left space-y-6"
+//             initial={{ opacity: 0, x: -30 }}
+//             whileInView={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8 }}
+//             viewport={{ once: true }}
+//           >
+//             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+//               Harapan Baru untuk Kesehatan Anda
+//             </h1>
+//             <h2 className="text-2xl text-shadow-black font-semibold">
+//               Metode Penyembuhan Ibnu Sina
+//             </h2>
+//             <p className="text-gray-200 text-base md:text-lg max-w-md leading-relaxed">
+//               Metode Penyembuhan Ibnu Sina tanpa operasi, kemoterapi, atau cuci
+//               darah. Klinik Utama CMI mengutamakan kesembuhan alami untuk Anda
+//               dan keluarga.
+//             </p>
+
+//             {/* Tombol */}
+//             <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">
+//               <button className="bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-full px-8 py-3 shadow-md transition">
+//                 Mulai Konsultasi
+//               </button>
+//               <a
+//                 href="#kisah-pasien"
+//                 className="text-white border border-white hover:bg-white hover:text-rose-600 font-medium rounded-full px-8 py-3 transition"
+//               >
+//                 Lihat Kisah Pasien
+//               </a>
+//             </div>
+//           </motion.div>
+
+//           {/* Kolom Video */}
+//           <motion.div
+//             className="flex-1 w-full"
+//             initial={{ opacity: 0, x: 30 }}
+//             whileInView={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8 }}
+//             viewport={{ once: true }}
+//           >
+//             <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+//               <iframe
+//                 className="w-full h-full"
+//                 src="https://www.youtube.com/embed/05kMbB0YzKo?si=JmTmjoyaLk6qPOLp"
+//                 title="Testimoni Pasien CMI"
+//                 frameBorder="0"
+//                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                 allowFullScreen
+//               />
+//             </div>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Hero;
+
 import { motion } from "framer-motion";
-import Background from "@assets/background.svg";
-import PhotoHeroOne from "../../../assets/kanker.jpg";
-import PhotoHeroTwo from "../../../assets/cmi.webp";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper/modules";
+
+import BackgroundImage from "@assets/Gedungcmi.jpg"; // Background Hero
+import Info1 from "@assets/kanker.jpg"; // Gambar Carousel
+import Info2 from "@assets/kanker.jpg";
+import Info3 from "@assets/kanker.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-white via-rose-100 to-red-600 pt-16">
-      <img
-        alt="Background Klinik Utama CMI"
-        className="absolute inset-0 w-full h-full object-cover brightness-[.75] blur-[1px] contrast-90"
-        src={Background}
-      />
+    <>
+      {/* HERO SECTION */}
+      <section
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(${BackgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Overlay gelap tipis */}
+        <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <main className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-20 items-center">
-          {/* Teks Konten */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+        {/* Konten Utama */}
+        <div className="relative z-10 max-w-7xl w-full px-6 sm:px-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            {/* Teks */}
+            <motion.div
+              className="flex-1 text-center lg:text-left space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                Harapan Baru untuk Kesehatan Anda
+              </h1>
+              <p className="text-gray-200 text-base md:text-lg max-w-md leading-relaxed">
+                Metode Penyembuhan Ibnu Sina di Klinik Utama CMI, solusi alami
+                tanpa operasi.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">
+                <button className="bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-full px-8 py-3 shadow-md transition">
+                  Mulai Konsultasi
+                </button>
+                <a
+                  href="#kisah-pasien"
+                  className="text-white border border-white hover:bg-white hover:text-rose-600 font-medium rounded-full px-8 py-3 transition"
+                >
+                  Lihat Kisah Pasien
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Video */}
+            <motion.div
+              className="flex-1 w-full"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/05kMbB0YzKo?si=JmTmjoyaLk6qPOLp"
+                  title="Testimoni Pasien CMI"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CAROUSEL SECTION */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
+            Informasi Penting
+          </h2>
+
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation
+            autoplay={{ delay: 4000 }}
+            loop
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
           >
-            <h1 className="font-headline text-left text-4xl sm:text-6xl md:text-7xl font-bold text-emerald-800 leading-tight mb-6 drop-shadow-xl">
-              Harapan Baru untuk Kesehatan Anda
-            </h1>
-            <h2 className="text-left text-xl sm:text-3xl text-black font-medium mb-6">
-              Diperkaya dengan Ilmu Kesehatan Warisan Ibnu Sina
-            </h2>
+            {/* Slide 1 */}
+            <SwiperSlide>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={Info1}
+                  alt="Info 1"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4 bg-white">
+                  <h3 className="font-semibold text-lg text-gray-800">
+                    Pemeriksaan Gratis
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Dapatkan layanan pemeriksaan kesehatan tanpa biaya setiap
+                    hari Senin.
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
 
-            <p className="text-black/80 font-sans text-base sm:text-lg mb-10 text-left leading-relaxed max-w-xl">
-              Di Klinik Utama CMI, kami memahami bahwa setiap kesembuhan adalah
-              perjalanan emosional. Dengan pendekatan medis modern dan filosofi
-              kesehatan Ibnu Sina, kami menghadirkan pemulihan tanpa operasi,
-              tanpa kemoterapi, dan tanpa cuci darah.
-            </p>
+            {/* Slide 2 */}
+            <SwiperSlide>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={Info2}
+                  alt="Info 2"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4 bg-white">
+                  <h3 className="font-semibold text-lg text-gray-800">
+                    Promo Detoks Darah
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Program spesial untuk meningkatkan vitalitas tubuh Anda.
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
 
-            <div className="flex justify-start space-x-6">
-              <button className="bg-red-600 hover:bg-red-700 transition duration-300 text-white font-semibold text-sm rounded-full px-6 py-3 shadow-lg">
-                Mulai Konsultasi
-              </button>
-              <button className="text-red-600 font-semibold text-sm flex items-center space-x-2 hover:underline transition">
-                <span>Lihat Kisah Pasien</span>
-                <i className="fas fa-arrow-right"></i>
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Media Konten */}
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {/* Video Testimoni */}
-            <div className="group relative w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 transition-transform duration-300 hover:scale-[1.01]">
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/20 z-10 pointer-events-none" />
-              <iframe
-                className="w-full h-full aspect-video z-0 relative"
-                src="https://www.youtube.com/embed/05kMbB0YzKo?si=JmTmjoyaLk6qPOLp"
-                title="Testimoni Pasien CMI"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
-        </main>
-      </div>
-    </section>
+            {/* Slide 3 */}
+            <SwiperSlide>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={Info3}
+                  alt="Info 3"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4 bg-white">
+                  <h3 className="font-semibold text-lg text-gray-800">
+                    Paket Penyembuhan Anak
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Solusi penyembuhan aman untuk anak-anak dengan metode alami.
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+    </>
   );
 };
 
