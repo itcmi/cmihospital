@@ -7,10 +7,10 @@ import VideoSection from "../components/VideoSection";
 
 const HomePage = () => {
   return (
-    <div className="space-y-20">
+    <div>
       <Hero />
-      <TentangKami />
       <LayananUnggulan />
+      <TentangKami />
       <ArtikelTerbaru />
       <VideoSection />
     </div>

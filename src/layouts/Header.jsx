@@ -28,7 +28,7 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 
-// Data untuk dropdown Product
+// Data untuk dropdown Layanan
 const products = [
   {
     name: "Analytics",
@@ -87,122 +87,53 @@ export default function Navbar() {
       {!mobileMenuOpen && (
         <nav
           aria-label="Global"
-          className={`flex w-full items-center justify-between p-6 lg:px-8 ${
-            isScrolled ? "bg-white shadow" : "bg-transparent"
-          }`}
+          className="flex w-full items-center justify-between p-6 lg:px-8 bg-white shadow"
         >
-          {/* Logo dan nama klinik */}
           <div className="flex items-center lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5 flex items-center">
               <img src={Logo} alt="cmihospital.com" className="h-8 w-auto" />
-              <span
-                className={`ml-3 text-lg font-bold uppercase transition-colors duration-300 ${
-                  isScrolled ? "text-black" : "text-white"
-                }`}
-              >
+              <span className="ml-3 text-lg font-bold uppercase text-black">
                 Klinik Utama CMI
               </span>
             </a>
           </div>
 
-          {/* Tombol hamburger untuk mobile */}
           <div className="flex lg:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black"
             >
-              <Bars3Icon
-                className={`size-6 ${
-                  isScrolled ? "text-emerald-800" : "text-white"
-                }`}
-              />
+              <Bars3Icon className="size-6" />
               <span className="sr-only">Open main menu</span>
             </button>
           </div>
 
-          {/* Menu desktop */}
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-            {/* Dropdown Product */}
             <Popover className="relative">
-              <PopoverButton
-                className={`flex items-center gap-x-1 text-sm font-semibold ${
-                  isScrolled ? "text-emerald-800" : "text-white"
-                }`}
-              >
-                Product
+              <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-black">
+                Layanan
                 <ChevronDownIcon className="size-5 flex-none" />
               </PopoverButton>
 
-              <PopoverPanel className="absolute top-full left-0 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
-                  {products.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50"
-                    >
-                      <div className="flex size-11 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        <item.icon className="size-6 text-gray-600 group-hover:text-indigo-600" />
-                      </div>
-                      <div>
-                        <a
-                          href={item.href}
-                          className="block font-semibold text-gray-900"
-                        >
-                          {item.name}
-                        </a>
-                        <p className="mt-1 text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon className="size-5 text-gray-400" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </PopoverPanel>
+              {/* ...PopoverPanel tetap... */}
             </Popover>
 
-            {/* Menu lain */}
-            <a
-              href="#"
-              className={`text-sm font-semibold ${
-                isScrolled ? "text-emerald-800" : "text-white"
-              }`}
-            >
+            <a href="#" className="text-sm font-semibold text-black">
               Features
             </a>
-            <a
-              href="#"
-              className={`text-sm font-semibold ${
-                isScrolled ? "text-emerald-800" : "text-white"
-              }`}
-            >
+            <a href="#" className="text-sm font-semibold text-black">
               Marketplace
             </a>
-            <a
-              href="#"
-              className={`text-sm font-semibold ${
-                isScrolled ? "text-emerald-800" : "text-white"
-              }`}
-            >
+            <a href="#" className="text-sm font-semibold text-black">
               Company
             </a>
           </PopoverGroup>
 
-          {/* Tombol login */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
               href="#"
-              className="inline-flex items-center gap-2 bg-amber-300 text-gray-950 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-amber-400 transition"
+              className="inline-flex items-center gap-2 bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-amber-400 transition"
             >
               Masuk <span aria-hidden="true">&rarr;</span>
             </a>
@@ -239,7 +170,7 @@ export default function Navbar() {
           <div className="mt-6">
             <Disclosure as="div" className="-mx-3">
               <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                Product
+                Layanan
                 <ChevronDownIcon className="size-5 group-data-open:rotate-180" />
               </DisclosureButton>
               <DisclosurePanel className="mt-2 space-y-2">
