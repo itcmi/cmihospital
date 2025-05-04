@@ -29,7 +29,7 @@ import {
 } from "@heroicons/react/20/solid";
 
 // Data untuk dropdown Layanan
-const products = [
+const pelayanan = [
   {
     name: "Analytics",
     description: "Get a better understanding of your traffic",
@@ -116,7 +116,40 @@ export default function Navbar() {
                 <ChevronDownIcon className="size-5 flex-none" />
               </PopoverButton>
 
-              {/* ...PopoverPanel tetap... */}
+              <PopoverPanel className="absolute left-0 top-full mt-2 w-screen max-w-md overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-900/5 z-10">
+                <div className="p-4">
+                  {pelayanan.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="group relative flex items-start gap-x-4 rounded-lg p-4 hover:bg-gray-50 transition"
+                    >
+                      <item.icon
+                        className="h-6 w-6 text-blue-600"
+                        aria-hidden="true"
+                      />
+                      <div className="text-sm leading-6">
+                        <p className="font-semibold text-gray-900">
+                          {item.name}
+                        </p>
+                        <p className="text-gray-600">{item.description}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                <div className="bg-gray-50 p-4">
+                  {callsToAction.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center gap-x-2 text-sm font-semibold text-blue-700 hover:text-blue-900"
+                    >
+                      <item.icon className="h-5 w-5" aria-hidden="true" />
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </PopoverPanel>
             </Popover>
 
             <a href="#" className="text-sm font-semibold text-black">
@@ -174,7 +207,7 @@ export default function Navbar() {
                 <ChevronDownIcon className="size-5 group-data-open:rotate-180" />
               </DisclosureButton>
               <DisclosurePanel className="mt-2 space-y-2">
-                {[...products, ...callsToAction].map((item) => (
+                {[...pelayanan, ...callsToAction].map((item) => (
                   <DisclosureButton
                     key={item.name}
                     as="a"
