@@ -3,7 +3,8 @@ import Hero from "../components/Hero";
 import TentangKami from "../components/TentangKami";
 import LayananUnggulan from "../components/LayananUnggulan";
 import ArtikelTerbaru from "../components/ArtikelTerbaru";
-import VideoSection from "../components/VideoSection";
+import SocialMediaVideosSection from "../components/VideoSection";
+import PatientTestimonialSection from "../components/TestimoniPasien";
 
 const HomePage = () => {
   return (
@@ -12,7 +13,8 @@ const HomePage = () => {
       <LayananUnggulan />
       <TentangKami />
       <ArtikelTerbaru />
-      <VideoSection />
+      <PatientTestimonialSection />
+      <SocialMediaVideosSection />
     </div>
   );
 };

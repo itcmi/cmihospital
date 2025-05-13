@@ -213,7 +213,7 @@ const Hero = () => {
           alt="Medical background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-white mix-blend-multiply" />
       </div>
 
       {/* Main content container */}
