@@ -7,13 +7,14 @@ import Register from "@/features/Auth/Register";
 import Auth from "@/features/Auth/Auth";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
-
+import ArtikelKesehatan from "../features/Articles/pages/Article";
 const AppRoutes = () => {
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="artikel-kesehatan" element={<ArtikelKesehatan />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

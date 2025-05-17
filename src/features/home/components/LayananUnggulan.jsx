@@ -160,7 +160,7 @@ const LayananUnggulan = () => {
             Pelayanan Medis Terbaik
           </span>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-700">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
             Layanan Unggulan <span className="text-blue-500">CMI</span>
           </h2>
 
@@ -234,7 +234,9 @@ const LayananUnggulan = () => {
                     <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-blue-900/60 to-transparent">
                       <div className="absolute bottom-0 left-0 p-6 lg:hidden">
                         <h3 className="text-xl font-bold text-white flex items-center">
-                          <span className="text-2xl mr-2">{layanan[activeTab].icon}</span>
+                          <span className="text-2xl mr-2">
+                            {layanan[activeTab].icon}
+                          </span>
                           {layanan[activeTab].nama}
                         </h3>
                       </div>
@@ -249,7 +251,9 @@ const LayananUnggulan = () => {
                 >
                   {/* Title - only visible on desktop */}
                   <div className="hidden lg:flex items-center mb-4">
-                    <span className="text-3xl mr-3">{layanan[activeTab].icon}</span>
+                    <span className="text-3xl mr-3">
+                      {layanan[activeTab].icon}
+                    </span>
                     <h3 className="text-xl md:text-2xl font-bold text-blue-700">
                       {layanan[activeTab].nama}
                     </h3>
@@ -299,7 +303,7 @@ const LayananUnggulan = () => {
           </motion.div>
 
           {/* Simple pagination indicator */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -310,7 +314,9 @@ const LayananUnggulan = () => {
                 key={idx}
                 onClick={() => scrollToService(idx)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  activeTab === idx ? "w-6 bg-blue-600" : "bg-blue-200 hover:bg-blue-300"
+                  activeTab === idx
+                    ? "w-6 bg-blue-600"
+                    : "bg-blue-200 hover:bg-blue-300"
                 }`}
                 aria-label={`View service ${idx + 1}`}
               />

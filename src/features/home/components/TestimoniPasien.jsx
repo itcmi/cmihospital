@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, ArrowLeft, Quote, User } from "lucide-react";
+import ClinicExterior from "@assets/Gedungcmi.jpg";
 
 export default function PatientTestimonialSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -50,17 +51,27 @@ export default function PatientTestimonialSection() {
   const testimonial = testimonials[currentTestimonial];
 
   return (
-    <div className="w-full bg-amber-100 py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+    <div
+      className="w-full relative py-16 md:py-24 bg-fixed bg-center bg-cover"
+      style={{
+        backgroundImage: `url(${ClinicExterior})`,
+      }}
+    >
+      {/* Overlay biru transparan */}
+      <div className="absolute inset-0 bg-blue-800/70 z-0" />
+
+      {/* Konten utama */}
+      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Cerita Kesembuhan Pasien
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-blue-100 max-w-3xl mx-auto">
             Kisah inspiratif dari pasien-pasien yang berhasil melawan penyakit
             mereka berkat perawatan dan dukungan dari tim medis kami.
           </p>
         </div>
+        {/* ...lanjutan konten tetap seperti semula... */}
 
         <div className="max-w-6xl mx-auto">
           <div className="relative bg-white rounded-xl overflow-hidden shadow-xl">
@@ -100,7 +111,7 @@ export default function PatientTestimonialSection() {
                 <div className="absolute top-6 right-6 text-blue-500 opacity-20">
                   <Quote size={48} />
                 </div>
-                
+
                 <div className="mb-6">
                   <p className="text-blue-600 font-medium text-sm">
                     {testimonial.tag}
