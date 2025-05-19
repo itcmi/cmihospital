@@ -3,11 +3,10 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/logo.svg";
 import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
   Popover,
   PopoverButton,
   PopoverGroup,
@@ -27,9 +26,11 @@ import {
   ChevronDownIcon,
   PhoneIcon,
   CalendarIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ClockIcon,
 } from "@heroicons/react/20/solid";
 
-// Data untuk dropdown Layanan Kesehatan
 const layananKesehatan = [
   {
     name: "Poli Umum",
@@ -63,20 +64,20 @@ const layananKesehatan = [
   },
 ];
 
-// Data untuk call to action
-const callsToAction = [
-  { name: "Jadwalkan Kunjungan", href: "/jadwal", icon: CalendarIcon },
-  { name: "Hubungi Kami", href: "/kontak", icon: PhoneIcon },
+const navigation = [
+  { name: "Fasilitas", href: "/fasilitas" },
+  { name: "Dokter", href: "/dokter" },
+  { name: "Tentang Kami", href: "/tentang-kami" },
+  { name: "Artikel Kesehatan", href: "/artikel-kesehatan" },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Deteksi scroll untuk mengubah background navbar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -85,234 +86,286 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-white/90"
+        isScrolled ? "bg-white shadow-md" : "bg-white/95"
       }`}
     >
-      {/* Navbar utama (disembunyikan saat mobile menu dibuka) */}
-      {!mobileMenuOpen && (
-        <nav
-          aria-label="Global"
-          className="flex w-full items-center justify-between p-6 lg:px-8 bg-white shadow"
-        >
-          <div className="flex items-center lg:flex-1">
-            <a href="/" className="-m-1.5 p-1.5 flex items-center">
-              <img src={Logo} alt="cmihospital.com" className="h-8 w-auto" />
-              <span className="ml-3 text-lg font-bold uppercase text-black">
+      {/* Top info bar */}
+      <div className="bg-blue-700 text-white py-2">
+        <div className="container mx-auto px-4 lg:px-8 xl:px-12 2xl:px-16">
+          <div className="flex flex-wrap justify-between items-center text-sm">
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center">
+                <PhoneIcon className="h-4 w-4 mr-2" />
+                <span>(021) 7890-1234</span>
+              </div>
+              <div className="hidden md:flex items-center">
+                <EnvelopeIcon className="h-4 w-4 mr-2" />
+                <span>info@klinikutamacmi.com</span>
+              </div>
+            </div>
+            <div className="flex items-center space-x-6">
+              <div className="hidden md:flex items-center">
+                <ClockIcon className="h-4 w-4 mr-2" />
+                <span>Senin-Sabtu: 08.00-20.00</span>
+              </div>
+              <div className="flex items-center">
+                <MapPinIcon className="h-4 w-4 mr-2" />
+                <span>Jakarta Selatan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main navigation */}
+      <nav
+        className={`relative container mx-auto px-4 lg:px-8 xl:px-12 2xl:px-16 py-8 ${
+          isScrolled ? "py-3" : "py-4"
+        } transition-all duration-300`}
+      >
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <a href="/" className="flex items-center">
+              <img src={Logo} alt="Klinik Utama CMI" className="h-8 w-auto" />
+              <span className="ml-3 text-lg font-bold text-blue-900">
                 Klinik Utama CMI
               </span>
             </a>
           </div>
 
+          {/* Mobile menu button */}
           <div className="flex lg:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-blue-800"
+              className="inline-flex items-center justify-center rounded-md p-2 text-blue-800 hover:text-blue-600 hover:bg-blue-50"
             >
-              <Bars3Icon className="size-6" />
+              <Bars3Icon className="h-6 w-6" />
               <span className="sr-only">Buka menu utama</span>
             </button>
           </div>
 
-          <PopoverGroup className="hidden lg:flex lg:gap-x-8">
-            <Popover className="relative">
-              <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-800 hover:text-blue-700 transition">
-                Layanan Kesehatan
-                <ChevronDownIcon className="size-5 flex-none text-blue-600" />
-              </PopoverButton>
-
-              <PopoverPanel className="absolute left-0 top-full mt-2 w-screen max-w-md overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-900/5 z-10">
-                <div className="p-4">
-                  {layananKesehatan.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="group relative flex items-start gap-x-4 rounded-lg p-4 hover:bg-blue-50 transition"
+          {/* Desktop navigation */}
+          <div className="hidden lg:flex lg:items-center lg:justify-between lg:flex-1 lg:ml-12">
+            <PopoverGroup className="flex gap-x-8">
+              {/* Layanan Kesehatan dropdown */}
+              <Popover className="relative">
+                {({ open }) => (
+                  <>
+                    <PopoverButton
+                      className={`group inline-flex items-center gap-x-1 text-sm font-medium text-gray-800 outline-none ${
+                        open ? "text-blue-700" : "hover:text-blue-700"
+                      }`}
                     >
-                      <item.icon
-                        className="h-6 w-6 text-blue-600"
-                        aria-hidden="true"
+                      Layanan Kesehatan
+                      <ChevronDownIcon
+                        className={`h-5 w-5 text-blue-600 transition ${
+                          open ? "rotate-180" : ""
+                        }`}
                       />
-                      <div className="text-sm leading-6">
-                        <p className="font-semibold text-gray-900">
-                          {item.name}
-                        </p>
-                        <p className="text-gray-600">{item.description}</p>
+                    </PopoverButton>
+
+                    <PopoverPanel className="absolute left-0 top-full z-10 mt-3 w-80 rounded-xl bg-white shadow-lg ring-1 ring-gray-200 focus:outline-none">
+                      <div className="p-1">
+                        {layananKesehatan.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="group flex items-center gap-x-3 rounded-lg p-3 text-sm hover:bg-blue-50"
+                          >
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-100">
+                              <item.icon className="h-5 w-5" />
+                            </div>
+                            <div>
+                              <div className="font-medium text-gray-900">
+                                {item.name}
+                              </div>
+                              <p className="text-xs text-gray-500">
+                                {item.description}
+                              </p>
+                            </div>
+                          </a>
+                        ))}
                       </div>
-                    </a>
-                  ))}
-                </div>
-                <div className="bg-blue-50 p-4">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center gap-x-2 text-sm font-semibold text-blue-700 hover:text-blue-900 mb-2 last:mb-0"
-                    >
-                      <item.icon className="h-5 w-5" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </PopoverPanel>
-            </Popover>
+                      <div className="bg-gray-50 p-3 rounded-b-xl">
+                        <div className="flex gap-x-5">
+                          <a
+                            href="/jadwal"
+                            className="flex items-center text-sm font-medium text-blue-700 hover:text-blue-800"
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            Jadwalkan Kunjungan
+                          </a>
+                          <a
+                            href="/kontak"
+                            className="flex items-center text-sm font-medium text-blue-700 hover:text-blue-800"
+                          >
+                            <PhoneIcon className="mr-2 h-4 w-4" />
+                            Hubungi Kami
+                          </a>
+                        </div>
+                      </div>
+                    </PopoverPanel>
+                  </>
+                )}
+              </Popover>
 
-            <a
-              href="/fasilitas"
-              className="text-sm font-semibold text-gray-800 hover:text-blue-700 transition"
-            >
-              Fasilitas
-            </a>
-            <a
-              href="/dokter"
-              className="text-sm font-semibold text-gray-800 hover:text-blue-700 transition"
-            >
-              Dokter
-            </a>
-            <a
-              href="/tentang-kami"
-              className="text-sm font-semibold text-gray-800 hover:text-blue-700 transition"
-            >
-              Tentang Kami
-            </a>
-            <a
-              href="/artikel-kesehatan"
-              className="text-sm font-semibold text-gray-800 hover:text-blue-700 transition"
-            >
-              Artikel Kesehatan
-            </a>
-          </PopoverGroup>
-
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="/daftar-online"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200"
-            >
-              Daftar Online <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </nav>
-      )}
-
-      {/* Mobile Menu */}
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-        className="lg:hidden"
-      >
-        {/* Overlay background */}
-        <div className="fixed inset-0 z-10 bg-black/30" />
-
-        <DialogPanel className="fixed inset-y-0 right-0 z-20 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto">
-          {/* Header mobile menu */}
-          <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5 flex items-center">
-              <img src={Logo} alt="Klinik Utama CMI" className="h-8 w-auto" />
-              <span className="ml-2 text-base font-bold uppercase text-blue-800">
-                Klinik Utama CMI
-              </span>
-            </a>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 rounded-md text-blue-800"
-            >
-              <XMarkIcon className="size-6" />
-              <span className="sr-only">Tutup menu</span>
-            </button>
-          </div>
-
-          {/* List menu mobile */}
-          <div className="mt-6">
-            <Disclosure as="div" className="-mx-3">
-              <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-blue-50">
-                Layanan Kesehatan
-                <ChevronDownIcon className="size-5 group-data-open:rotate-180" />
-              </DisclosureButton>
-              <DisclosurePanel className="mt-2 space-y-2">
-                {layananKesehatan.map((item) => (
-                  <DisclosureButton
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className="flex items-center gap-x-2 rounded-lg py-2 px-6 text-sm font-semibold text-gray-900 hover:bg-blue-50"
-                  >
-                    <item.icon
-                      className="h-5 w-5 text-blue-600"
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </DisclosureButton>
-                ))}
-              </DisclosurePanel>
-            </Disclosure>
-
-            {/* Menu tambahan */}
-            <div className="space-y-2 mt-6">
-              <a
-                href="/fasilitas"
-                className="flex items-center gap-x-2 rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-blue-50"
-              >
-                <BuildingOffice2Icon
-                  className="h-5 w-5 text-blue-600"
-                  aria-hidden="true"
-                />
-                Fasilitas
-              </a>
-              <a
-                href="/dokter"
-                className="flex items-center gap-x-2 rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-blue-50"
-              >
-                <UserGroupIcon
-                  className="h-5 w-5 text-blue-600"
-                  aria-hidden="true"
-                />
-                Dokter
-              </a>
-              <a
-                href="/tentang-kami"
-                className="flex items-center gap-x-2 rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-blue-50"
-              >
-                <BookOpenIcon
-                  className="h-5 w-5 text-blue-600"
-                  aria-hidden="true"
-                />
-                Tentang Kami
-              </a>
-              <a
-                href="/artikel"
-                className="flex items-center gap-x-2 rounded-lg py-2 px-3 text-base font-semibold text-gray-900 hover:bg-blue-50"
-              >
-                <ClipboardDocumentListIcon
-                  className="h-5 w-5 text-blue-600"
-                  aria-hidden="true"
-                />
-                Artikel Kesehatan
-              </a>
-            </div>
-
-            {/* Call to action */}
-            <div className="mt-6 space-y-3">
-              {callsToAction.map((item) => (
+              {/* Standard navigation links */}
+              {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="flex items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-gray-50 py-2.5 text-sm font-semibold text-blue-700 hover:bg-gray-100"
+                  className="text-sm font-medium text-gray-800 hover:text-blue-700"
                 >
-                  <item.icon className="h-5 w-5" aria-hidden="true" />
                   {item.name}
                 </a>
               ))}
+            </PopoverGroup>
+
+            {/* CTA Button */}
+            <div>
               <a
                 href="/daftar-online"
-                className="block rounded-lg bg-blue-600 py-2.5 text-center font-semibold text-white hover:bg-blue-700"
+                className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Daftar Online
+                <span className="ml-2">→</span>
               </a>
             </div>
           </div>
-        </DialogPanel>
-      </Dialog>
+        </div>
+      </nav>
+
+      {/* Divider */}
+      <div className="border-b border-gray-200"></div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/30" 
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          
+          {/* Panel */}
+          <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white p-6 overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <a href="/" className="flex items-center">
+                <img src={Logo} alt="Klinik Utama CMI" className="h-8 w-auto" />
+                <span className="ml-2 text-base font-bold text-blue-900">
+                  Klinik Utama CMI
+                </span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-md p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+              >
+                <XMarkIcon className="h-6 w-6" />
+                <span className="sr-only">Tutup menu</span>
+              </button>
+            </div>
+
+            {/* Contact info */}
+            <div className="bg-blue-50 rounded-lg p-4 mb-6">
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center">
+                  <PhoneIcon className="h-5 w-5 text-blue-600 mr-3" />
+                  <span>(021) 7890-1234</span>
+                </div>
+                <div className="flex items-center">
+                  <EnvelopeIcon className="h-5 w-5 text-blue-600 mr-3" />
+                  <span>info@klinikutamacmi.com</span>
+                </div>
+                <div className="flex items-center">
+                  <ClockIcon className="h-5 w-5 text-blue-600 mr-3" />
+                  <span>Senin-Sabtu: 08.00-20.00</span>
+                </div>
+                <div className="flex items-center">
+                  <MapPinIcon className="h-5 w-5 text-blue-600 mr-3" />
+                  <span>Jakarta Selatan</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile navigation links */}
+            <div className="space-y-6">
+              {/* Layanan Kesehatan */}
+              <Menu>
+                {({ open }) => (
+                  <>
+                    <div className="border-b border-gray-200 pb-3">
+                      <MenuButton className="flex w-full items-center justify-between text-base font-medium text-gray-900">
+                        Layanan Kesehatan
+                        <ChevronDownIcon
+                          className={`h-5 w-5 text-gray-500 transition ${
+                            open ? "rotate-180" : ""
+                          }`}
+                        />
+                      </MenuButton>
+                      {open && (
+                        <MenuItems className="mt-3 space-y-2">
+                          {layananKesehatan.map((item) => (
+                            <MenuItem key={item.name}>
+                              <a
+                                href={item.href}
+                                className="flex items-center py-2 pl-4 text-base text-gray-700 hover:text-blue-700"
+                              >
+                                <item.icon className="mr-3 h-5 w-5 text-blue-600" />
+                                {item.name}
+                              </a>
+                            </MenuItem>
+                          ))}
+                        </MenuItems>
+                      )}
+                    </div>
+                  </>
+                )}
+              </Menu>
+
+              {/* Other navigation links */}
+              <div className="space-y-3">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="flex items-center border-b border-gray-200 py-3 text-base font-medium text-gray-900 hover:text-blue-700"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+
+              {/* Action buttons */}
+              <div className="pt-4 space-y-3">
+                <a
+                  href="/jadwal"
+                  className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-blue-700 hover:bg-gray-50"
+                >
+                  <CalendarIcon className="mr-2 h-5 w-5" />
+                  Jadwalkan Kunjungan
+                </a>
+                <a
+                  href="/kontak"
+                  className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-blue-700 hover:bg-gray-50"
+                >
+                  <PhoneIcon className="mr-2 h-5 w-5" />
+                  Hubungi Kami
+                </a>
+                <a
+                  href="/daftar-online"
+                  className="flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  Daftar Online
+                  <span className="ml-2">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

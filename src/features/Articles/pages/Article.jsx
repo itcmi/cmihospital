@@ -261,7 +261,7 @@ export default function ArtikelKesehatan() {
         </script>
       </Helmet>
 
-      <main className="bg-gray-50 min-h-screen pt-20 pb-16">
+      <main className="bg-gray-50 min-h-screen pt-20 pb-16 my-14">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-16 mb-8">
           <div className="container mx-auto px-4">

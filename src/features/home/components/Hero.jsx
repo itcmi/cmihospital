@@ -243,7 +243,7 @@ Catatan: ${formData.notes}`;
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+    <section className="relative my-32 min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-blue-50 to-white">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -290,27 +290,7 @@ Catatan: ${formData.notes}`;
               </button>
             </div>
 
-            {/* Endorsement section */}
-            <div className="flex items-center justify-center lg:justify-start gap-5 pt-6">
-              <div className="flex -space-x-4">
-                {[1, 2, 3, 4].map((item) => (
-                  <div
-                    key={item}
-                    className="w-12 h-12 rounded-full border-2 border-white shadow-md bg-gray-200 overflow-hidden"
-                  >
-                    <img
-                      src={`/api/placeholder/100/100`}
-                      alt="Patient"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="text-sm md:text-base text-white">
-                <p className="font-bold">9000+ Pasien</p>
-                <p className="text-gray-200">Percayakan Kesehatan Mereka</p>
-              </div>
-            </div>
+            
 
             {/* Trust badges */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
@@ -468,37 +448,6 @@ Catatan: ${formData.notes}`;
           </motion.div>
         </div>
       </div>
-
-      {/* Floating doctor badge */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className="absolute bottom-8 md:bottom-12 right-8 md:right-12 z-20 hidden md:flex items-center bg-white rounded-full pl-3 pr-6 py-3 shadow-xl border border-blue-100"
-      >
-        <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mr-3 border border-blue-100">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-        </div>
-        <div className="text-left">
-          <p className="text-sm font-bold text-gray-800">
-            Tim Dokter Spesialis
-          </p>
-          <p className="text-xs text-gray-600">Siap Membantu Anda 24/7</p>
-        </div>
-      </motion.div>
     </section>
   );
 };

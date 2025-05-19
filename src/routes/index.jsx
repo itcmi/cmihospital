@@ -8,6 +8,8 @@ import Auth from "@/features/Auth/Auth";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import ArtikelKesehatan from "../features/Articles/pages/Article";
+import ArticlePage from "../features/Articles/pages/SingleArticle";
+import AboutUs from "../features/AboutUs/pages/AboutUs";
 const AppRoutes = () => {
   return (
     <>
@@ -15,6 +17,8 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="artikel-kesehatan" element={<ArtikelKesehatan />} />
+        <Route path="tentang-kami" element={<AboutUs />} />
+        <Route path="artikel-kesehatan-single" element={<ArticlePage />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
