@@ -100,7 +100,7 @@ export default function Navbar() {
               </div>
               <div className="hidden md:flex items-center">
                 <EnvelopeIcon className="h-4 w-4 mr-2" />
-                <span>info@klinikutamacmi.com</span>
+                <span>info@cmihospital.com</span>
               </div>
             </div>
             <div className="flex items-center space-x-6">
@@ -110,7 +110,7 @@ export default function Navbar() {
               </div>
               <div className="flex items-center">
                 <MapPinIcon className="h-4 w-4 mr-2" />
-                <span>Jakarta Selatan</span>
+                <span>Bandung, Indonesia</span>
               </div>
             </div>
           </div>
@@ -244,11 +244,11 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-50">
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/30" 
+          <div
+            className="fixed inset-0 bg-black/30"
             onClick={() => setMobileMenuOpen(false)}
           />
-          
+
           {/* Panel */}
           <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white p-6 overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
@@ -273,11 +273,11 @@ export default function Navbar() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-center">
                   <PhoneIcon className="h-5 w-5 text-blue-600 mr-3" />
-                  <span>(021) 7890-1234</span>
+                  <span>(022) 253 1000</span>
                 </div>
                 <div className="flex items-center">
                   <EnvelopeIcon className="h-5 w-5 text-blue-600 mr-3" />
-                  <span>info@klinikutamacmi.com</span>
+                  <span>info@cmihospital.com</span>
                 </div>
                 <div className="flex items-center">
                   <ClockIcon className="h-5 w-5 text-blue-600 mr-3" />
@@ -285,7 +285,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center">
                   <MapPinIcon className="h-5 w-5 text-blue-600 mr-3" />
-                  <span>Jakarta Selatan</span>
+                  <span>Bandung, Indonesia</span>
                 </div>
               </div>
             </div>

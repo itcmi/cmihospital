@@ -52,10 +52,10 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-sm">
             <FaPhoneAlt className="text-blue-300" />
             <a
-              href="tel:+628123456789"
+              href="tel:+62(022) 253 1000"
               className="hover:text-blue-200 transition-colors"
             >
-              +62 812-3456-789
+              +62 821-2159-0000
             </a>
           </div>
           <div className="flex items-center gap-2 text-sm">
@@ -69,7 +69,10 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <FaMapMarkerAlt className="text-blue-300" />
-            <span>Jl. Kesehatan No. 123, Jakarta 12345</span>
+            <span>
+              Jl. Tubagus Ismail VII, Sekeloa, Kecamatan Coblong, Kota Bandung,
+              Jawa Barat 40134
+            </span>
           </div>
           <div className="flex items-center gap-4">
             <a
@@ -179,10 +182,9 @@ const Footer = () => {
                 "Penanganan Penyakit Jantung",
                 "Penanganan Penyakit Diabetes",
                 "Penanganan Penyakit Ginjal",
-                "Penanganan Penyakit Stroke",
-                "Penanganan Hipertensi",
                 "Medical Check Up",
                 "Konsultasi Kesehatan",
+                "Pemeriksaan Laboratorium",
               ].map((item, index) => (
                 <li key={index} className="flex items-center group">
                   <FaChevronRight className="mr-2 text-blue-300 text-xs group-hover:translate-x-1 transition-transform" />
@@ -204,13 +206,13 @@ const Footer = () => {
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {[
-                ["Beranda", "#"],
+                ["Beranda", "/"],
                 ["Tentang Kami", "#"],
                 ["Layanan", "#"],
                 ["Dokter", "#"],
                 ["Galeri", "#"],
                 ["Testimoni", "#"],
-                ["Artikel", "#"],
+                ["Artikel", "/artikel-kesehatan"],
                 ["Kontak", "#"],
                 ["FAQ", "#"],
                 ["Karir", "#"],
@@ -240,7 +242,8 @@ const Footer = () => {
                   <FaMapMarkerAlt className="text-sm" />
                 </div>
                 <p className="text-blue-100">
-                  Jl. Kesehatan No. 123, Jakarta Selatan, DKI Jakarta 12345
+                  Jl. Tubagus Ismail VII, Sekeloa, Kecamatan Coblong, Kota
+                  Bandung, Jawa Barat 40134
                 </p>
               </div>
 
@@ -278,7 +281,7 @@ const Footer = () => {
                   type="email"
                   placeholder="Email Anda"
                   required
-                  className="w-full px-4 py-3 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 pr-12 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                   type="submit"
@@ -314,7 +317,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-white hover:text-blue-300 transition-colors"
             >
-              PT. Canon Medicine Indonesia
+              PT. Canon Medicinae Indonesia
             </a>
           </div>
 

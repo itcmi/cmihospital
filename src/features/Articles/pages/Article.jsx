@@ -277,13 +277,13 @@ export default function ArtikelKesehatan() {
 
               {/* Search Bar */}
               <div className="mt-6 max-w-2xl mx-auto relative">
-                <div className="relative">
+                <div className="relative ">
                   <input
                     type="text"
                     placeholder="Cari artikel kesehatan..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full px-4 py-4 pl-12 pr-16 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg"
+                    className="w-full px-4 py-4 pl-12 pr-16 bg-white rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg"
                     aria-label="Cari artikel"
                   />
                   <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />

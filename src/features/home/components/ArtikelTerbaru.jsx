@@ -91,7 +91,9 @@ export default function HealthArticlesSection() {
       : healthArticles.filter((article) => article.category === activeTab);
 
   // Batasi jumlah artikel yang ditampilkan jika showAllArticles false
-  const displayedArticles = showAllArticles ? filteredArticles : filteredArticles.slice(0, 3);
+  const displayedArticles = showAllArticles
+    ? filteredArticles
+    : filteredArticles.slice(0, 3);
 
   // Mengatur artikel featured di bagian atas
   const featuredArticles = healthArticles.filter((article) => article.featured);
@@ -181,7 +183,7 @@ export default function HealthArticlesSection() {
               />
               <Search
                 size={20}
-                className="absolute left-3 top-2.5 text-blue-400"
+                className="absolute left-3 top-2.5 text-white bg-amber-50"
               />
             </div>
           </div>
@@ -293,7 +295,7 @@ export default function HealthArticlesSection() {
         {/* Tombol untuk melihat lebih banyak artikel */}
         {filteredArticles.length > 3 && !showAllArticles && (
           <div className="mt-16 text-center">
-            <button 
+            <button
               onClick={() => setShowAllArticles(true)}
               className="inline-flex items-center gap-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium px-8 py-3 rounded-lg transition-all duration-300"
             >
@@ -306,7 +308,7 @@ export default function HealthArticlesSection() {
         {/* Tombol untuk kembali ke tampilan terbatas */}
         {showAllArticles && (
           <div className="mt-16 text-center">
-            <button 
+            <button
               onClick={() => setShowAllArticles(false)}
               className="inline-flex items-center gap-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium px-8 py-3 rounded-lg transition-all duration-300"
             >

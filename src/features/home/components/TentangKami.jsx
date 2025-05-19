@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import HeroImage from "@assets/cmigedung.png";
+import GedungCMI from "@assets/cmi.webp";
 
 const TentangKami = () => {
   const controls = useAnimation();
@@ -248,7 +248,7 @@ const TentangKami = () => {
                   <div className="aspect-w-4 aspect-h-3 md:aspect-h-4">
                     <div className="relative w-full h-full">
                       <img
-                        src={HeroImage}
+                        src={GedungCMI}
                         alt="Gedung Klinik CMI"
                         className="object-cover w-full h-full rounded-3xl shadow-2xl"
                         style={{
