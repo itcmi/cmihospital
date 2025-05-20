@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import GedungCMI from "@assets/cmi.webp"
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("sejarah");
@@ -101,7 +102,7 @@ export default function AboutUs() {
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div className="order-2 md:order-1 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="/api/placeholder/600/400"
+                  src={GedungCMI}
                   alt="Foto Perusahaan Sekarang"
                   className="w-full h-full object-cover"
                 />

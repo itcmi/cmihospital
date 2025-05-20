@@ -10,6 +10,8 @@ import Footer from "../layouts/Footer";
 import ArtikelKesehatan from "../features/Articles/pages/Article";
 import ArticlePage from "../features/Articles/pages/SingleArticle";
 import AboutUs from "../features/AboutUs/pages/AboutUs";
+import FacilitiesPage from "../features/Fasilitas/pages/FasilitasCmi";
+
 const AppRoutes = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="artikel-kesehatan" element={<ArtikelKesehatan />} />
         <Route path="tentang-kami" element={<AboutUs />} />
+        <Route path="fasilitas" element={<FacilitiesPage />} />
         <Route path="artikel-kesehatan-single" element={<ArticlePage />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
