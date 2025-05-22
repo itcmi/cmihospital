@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import GedungCMI from "@assets/cmi.webp"
+import GedungCMI from "@assets/cmi.webp";
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("sejarah");
@@ -137,16 +137,16 @@ export default function AboutUs() {
               <div className="grid md:grid-cols-4 gap-4">
                 <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
-                    1995
+                    2008
                   </div>
-                  <p className="text-gray-700">Pendirian perusahaan</p>
+                  <p className="text-gray-700">Pendirian GR SETRA</p>
                 </div>
-                <div className="bg-white p-4 rounded shadow">
+                {/* <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
                     2000
                   </div>
                   <p className="text-gray-700">Ekspansi pertama</p>
-                </div>
+                </div> */}
                 <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
                     2010
@@ -359,16 +359,16 @@ export default function AboutUs() {
                     <p className="text-gray-700 font-medium mb-2">
                       Peta Lokasi Perusahaan
                     </p>
+
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.065141878728!2d107.61702511477264!3d-6.882800195026383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68bfa8371dbd07%3A0x96602a59adfec6bc!2sKlinik%20Utama%20CMI%20-%20Klinik%20Kanker%2C%20Jantung%2C%20Gagal%20Ginjal%20dan%20Diabetes!5e0!3m2!1sid!2sid!4v1678439050121!5m2!1sid!2sid"
-                      title="peta klinik utama cmi"
-                      width="100%"
-                      height="350"
-                      style="border:0;"
-                      allowfullscreen=""
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0651863383387!2d107.61663887573904!3d-6.8827948673500305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68bfa8371dbd07%3A0x96602a59adfec6bc!2sKlinik%20Utama%20CMI%20-%20Klinik%20Kanker%2C%20Jantung%2C%20Gagal%20Ginjal%20dan%20Diabetes!5e0!3m2!1sid!2sid!4v1747881562509!5m2!1sid!2sid"
+                      width="725"
+                      height="600"
+                      style={{ border: 0 }}
+                      allowfullscreen
                       loading="lazy"
                       referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    />
                     <p className="text-gray-600 text-sm">
                       Maps Klinik Utama CMI Bandung
                     </p>

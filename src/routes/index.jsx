@@ -1,7 +1,7 @@
 // src/routes/index.jsx
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/features/home/pages/HomePage";
-import Error from "@/features/Error/Error";
+import Error from "../features/Error/Error";
 import Login from "@/features/Auth/Login";
 import Register from "@/features/Auth/Register";
 import Auth from "@/features/Auth/Auth";
