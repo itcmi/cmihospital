@@ -1,9 +1,85 @@
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import GedungCMI from "@assets/cmi.webp";
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("sejarah");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const nilaiPerusahaan = [
+    {
+      title: "Integritas Ilmiah dan Spiritual",
+      text: "Menggabungkan ilmu kedokteran modern dan klasik timur secara ilmiah dan etis, berpijak pada nilai spiritual dan filosofi pengobatan dari dr. Ibnu Sina.",
+      img: GedungCMI,
+    },
+    {
+      title: "Kepedulian terhadap Kesehatan Holistik",
+      text: "Melayani pasien dengan pendekatan menyeluruh yang memperhatikan aspek fisik, mental, dan spiritual untuk penyembuhan yang utuh.",
+      img: GedungCMI,
+    },
+    {
+      title: "Inovasi Berkelanjutan",
+      text: "Terus mengembangkan metode pengobatan berbasis riset, teknologi mutakhir, dan kebijaksanaan klasik demi hasil yang lebih baik bagi pasien.",
+      img: GedungCMI,
+    },
+    {
+      title: "Keberanian dan Ketulusan dalam Pelayanan",
+      text: "Meneladani semangat “Glantrang Setra” (Pemberani Suci), melayani dengan hati, keberanian, dan dedikasi tinggi untuk kesehatan masyarakat.",
+      img: GedungCMI,
+    },
+    {
+      title: "Kolaborasi dan Kemitraan",
+      text: "Membangun jejaring dan kemitraan strategis secara nasional dan internasional demi pengembangan dan penerapan ilmu kedokteran yang lebih luas.",
+      img: GedungCMI,
+    },
+    {
+      title: "Pendidikan dan Pengembangan SDM",
+      text: "Menumbuhkan budaya belajar, riset, dan pelatihan berkelanjutan bagi seluruh tenaga kesehatan untuk mencapai standar tertinggi.",
+      img: GedungCMI,
+    },
+    {
+      title: "Edukasi dan Pemberdayaan Masyarakat",
+      text: "Memberikan edukasi kesehatan yang mudah dipahami untuk meningkatkan kesadaran masyarakat dalam mencegah dan menangani penyakit kronis.",
+      img: GedungCMI,
+    },
+    {
+      title: "Kualitas Tanpa Kompromi",
+      text: "Berkomitmen memberikan layanan dengan standar kualitas terbaik dalam setiap tindakan medis dan pelayanan kepada pasien.",
+      img: GedungCMI,
+    },
+  ];
+
+  const itemsPerPage = {
+    mobile: 1,
+    tablet: 2,
+    desktop: 3,
+  };
+
+  const totalSlides = {
+    mobile: nilaiPerusahaan.length,
+    tablet: Math.ceil(nilaiPerusahaan.length / itemsPerPage.tablet),
+    desktop: Math.ceil(nilaiPerusahaan.length / itemsPerPage.desktop),
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides.desktop);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + totalSlides.desktop) % totalSlides.desktop
+    );
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   return (
     <div className="bg-white min-h-screen my-34">
@@ -139,7 +215,9 @@ export default function AboutUs() {
                   <div className="font-bold text-blue-900 text-lg mb-1">
                     2008
                   </div>
-                  <p className="text-gray-700">Pendirian GR SETRA</p>
+                  <p className="text-gray-700">
+                    Berdirinya Poliklinik GR SETRA
+                  </p>
                 </div>
                 {/* <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
@@ -149,15 +227,19 @@ export default function AboutUs() {
                 </div> */}
                 <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
-                    2010
+                    2011
                   </div>
-                  <p className="text-gray-700">Pendirian kantor pusat baru</p>
+                  <p className="text-gray-700">
+                    Renovasi gedung dan peningkatan kualitas fasilitas{" "}
+                  </p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                   <div className="font-bold text-blue-900 text-lg mb-1">
-                    2020
+                    2019
                   </div>
-                  <p className="text-gray-700">Transformasi digital</p>
+                  <p className="text-gray-700">
+                    Klinik Utama dan Laboratorium CMI
+                  </p>
                 </div>
               </div>
             </div>
@@ -180,10 +262,11 @@ export default function AboutUs() {
                   oleh Ilmu dan Teknologi yang Mutakhir."
                 </p>
                 <p className="text-blue-100">
-                  Kami berkomitmen untuk terus berada di garis depan teknologi,
-                  menciptakan produk dan layanan yang tidak hanya memenuhi
-                  kebutuhan saat ini tetapi juga mengantisipasi kebutuhan masa
-                  depan.
+                  Kami berkomitmen untuk terus berada di garis depan inovasi
+                  layanan kesehatan, dengan menggabungkan kearifan pengobatan
+                  Timur klasik ala Ibnu Sina dan ilmu kedokteran modern, guna
+                  memberikan solusi holistik dan berkelanjutan bagi penanganan
+                  penyakit kronis.
                 </p>
               </div>
 
@@ -234,66 +317,125 @@ export default function AboutUs() {
               </div>
             </div>
 
-            <div className="bg-blue-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold text-blue-800 mb-6">
+            <div className="bg-blue-50 p-4 md:p-8 rounded-lg">
+              <h3 className="text-2xl md:text-3xl font-semibold text-blue-800 mb-8 text-center">
                 Nilai-Nilai Perusahaan
               </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Integritas
-                  </h4>
-                  <p className="text-gray-700">
-                    Kami berkomitmen untuk selalu bertindak dengan kejujuran,
-                    transparansi, dan etika tertinggi dalam setiap aspek bisnis
-                    kami.
-                  </p>
+
+              {/* Desktop and Tablet Grid View */}
+              <div className="hidden md:block">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {nilaiPerusahaan.map((item, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col h-full"
+                    >
+                      <div className="mb-4 overflow-hidden rounded-lg">
+                        <img
+                          src={item.img}
+                          alt={item.title}
+                          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <h4 className="text-xl font-bold text-blue-900 mb-3">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-700 text-sm leading-relaxed flex-grow">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Inovasi
-                  </h4>
-                  <p className="text-gray-700">
-                    Kami terus mendorong batas-batas untuk menciptakan solusi
-                    yang lebih baik, lebih cerdas, dan lebih efisien bagi klien
-                    kami.
-                  </p>
+              </div>
+
+              {/* Mobile Slider View */}
+              <div className="md:hidden">
+                <div className="relative">
+                  <div className="overflow-hidden rounded-lg">
+                    <div
+                      className="flex transition-transform duration-300 ease-in-out"
+                      style={{
+                        transform: `translateX(-${currentSlide * 100}%)`,
+                      }}
+                    >
+                      {nilaiPerusahaan.map((item, index) => (
+                        <div key={index} className="w-full flex-shrink-0 px-2">
+                          <div className="bg-white p-6 rounded-lg shadow-md">
+                            <div className="mb-4 overflow-hidden rounded-lg">
+                              <img
+                                src={item.img}
+                                alt={item.title}
+                                className="w-full h-48 object-cover"
+                              />
+                            </div>
+                            <h4 className="text-xl font-bold text-blue-900 mb-3">
+                              {item.title}
+                            </h4>
+                            <p className="text-gray-700 text-sm leading-relaxed">
+                              {item.text}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-md transition-all duration-200"
+                    aria-label="Previous slide"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-blue-800" />
+                  </button>
+
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-md transition-all duration-200"
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="w-5 h-5 text-blue-800" />
+                  </button>
                 </div>
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Kolaborasi
-                  </h4>
-                  <p className="text-gray-700">
-                    Kami percaya pada kekuatan kerja sama, baik di dalam tim
-                    kami maupun dengan mitra dan klien kami.
-                  </p>
+
+                {/* Pagination Dots */}
+                <div className="flex justify-center mt-6 space-x-2">
+                  {nilaiPerusahaan.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        currentSlide === index
+                          ? "bg-blue-600 scale-110"
+                          : "bg-blue-300 hover:bg-blue-400"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
                 </div>
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Keunggulan
-                  </h4>
-                  <p className="text-gray-700">
-                    Kami berkomitmen untuk memberikan kualitas terbaik dalam
-                    setiap produk dan layanan yang kami tawarkan.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Keberlanjutan
-                  </h4>
-                  <p className="text-gray-700">
-                    Kami bertanggung jawab terhadap dampak sosial dan lingkungan
-                    dari kegiatan bisnis kami.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded shadow-md">
-                  <h4 className="text-xl font-bold text-blue-900 mb-3">
-                    Fokus Pelanggan
-                  </h4>
-                  <p className="text-gray-700">
-                    Kepuasan klien adalah prioritas utama kami, dan kami selalu
-                    berusaha untuk melebihi harapan mereka.
-                  </p>
+              </div>
+
+              {/* Stats or Additional Info */}
+              <div className="mt-8 pt-6 border-t border-blue-200">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl md:text-3xl font-bold text-blue-800">
+                      6
+                    </div>
+                    <div className="text-sm text-blue-600">Nilai Utama</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl md:text-3xl font-bold text-blue-800">
+                      100%
+                    </div>
+                    <div className="text-sm text-blue-600">Komitmen</div>
+                  </div>
+                  <div className="col-span-2 md:col-span-1">
+                    <div className="text-2xl md:text-3xl font-bold text-blue-800">
+                      1
+                    </div>
+                    <div className="text-sm text-blue-600">Visi Bersama</div>
+                  </div>
                 </div>
               </div>
             </div>

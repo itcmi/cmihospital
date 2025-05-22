@@ -21,6 +21,7 @@ import {
   BuildingOffice2Icon,
   XMarkIcon,
   HeartIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import {
   ChevronDownIcon,
@@ -33,34 +34,45 @@ import {
 
 const layananKesehatan = [
   {
-    name: "Poli Umum",
-    description: "Layanan pemeriksaan kesehatan umum",
-    href: "/layanan/poli-umum",
+    name: "IGD dan Rawat Inap",
+    description:
+      "Layanan gawat darurat dan rawat inap tersedia setiap hari selama 24 jam.",
+    href: "/layanan/igd-rawat-inap",
     icon: ClipboardDocumentListIcon,
   },
   {
-    name: "Medical Check-Up",
-    description: "Pemeriksaan kesehatan rutin komprehensif",
-    href: "/layanan/medical-check-up",
+    name: "Poli Umum & Konsultasi Komplementer",
+    description: "Tersedia setiap Senin sampai Sabtu pukul 08.00 – 17.00 WIB.",
+    href: "/layanan/poli-komplementer",
     icon: HeartIcon,
   },
   {
-    name: "Konsultasi Spesialis",
-    description: "Konsultasi dengan dokter spesialis",
-    href: "/layanan/konsultasi-spesialis",
+    name: "Pemeriksaan dan Konsultasi Dokter",
+    description:
+      "Dilakukan oleh dokter umum, spesialis, dan konsultan komplementer.",
+    href: "/layanan/konsultasi-dokter",
     icon: UserGroupIcon,
   },
   {
-    name: "Vaksinasi",
-    description: "Layanan vaksinasi untuk berbagai usia",
-    href: "/layanan/vaksinasi",
+    name: "Instalasi Farmasi Klinik",
+    description:
+      "Menyediakan obat-obatan lengkap dengan kualitas yang terjamin.",
+    href: "/layanan/farmasi",
     icon: BookOpenIcon,
   },
   {
-    name: "Laboratorium",
-    description: "Layanan pemeriksaan laboratorium lengkap",
+    name: "Laboratorium Avicenna",
+    description:
+      "Fasilitas laboratorium canggih untuk pemeriksaan penunjang medis.",
     href: "/layanan/laboratorium",
     icon: ArrowPathIcon,
+  },
+  {
+    name: "Follow Up Pasien",
+    description:
+      "Tim edukasi memantau dan mengevaluasi perkembangan pasien secara berkelanjutan.",
+    href: "/layanan/follow-up",
+    icon: ChatBubbleBottomCenterTextIcon,
   },
 ];
 
